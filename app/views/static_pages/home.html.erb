@@ -1,0 +1,29 @@
+<% provide(:title, 'Home') %>
+<% if signed_in? %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        <%= render 'shared/user_info' %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+    <sectio>
+      <%= render 'shared/micropost_form' %>
+    </section>
+  </aside>
+
+    <div class="col-md-8 microposts-heading">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to home page</h1>
+    <h2>This is the
+      <a href="http://railstutorial.org/">Ruby on Rails tutorial </a> sample Example</h2>
+    <%= link_to "Sign Up Now!", new_user_path, class: 'btn btn-large btn-primary' %>
+  </div>
+<% end %>

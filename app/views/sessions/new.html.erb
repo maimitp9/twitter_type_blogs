@@ -1,0 +1,24 @@
+<% provide(:title, "Sign In") %>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h2>Sigh in Now</h2>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :userName, 'Email', class: 'control-label' %>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'Use Email as User Name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'Password', class: 'control-label' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Sign In', class: 'btn btn-large btn-success' %>
+
+    <% end %>
+    <p>New User? <%= link_to "Sign Up Now", signup_path %>
+
+  </div>
+  <div class="col-md-4"></div>
+</div>

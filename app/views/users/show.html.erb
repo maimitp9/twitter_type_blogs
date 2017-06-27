@@ -1,0 +1,26 @@
+<%= provide( :title , "#{@user.name} Profile" ) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %><br/>
+      </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8 microposts-heading">
+    <%= render 'follow_form' if signed_in? %>
+    <% if @user.microposts.any? %>
+      <h3>Micropost(<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <!-- 1. MICROPOSTS IS VARIABLE THAT IS COME FEOM USER CONTROLLER WITH ALL MICROPOSTS
+             2. @MICROPOSTS PRINT EACH MICROPOST USING PARTIAL _MICROPOST.HTML.ERB-->
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts, renderer: BootstrapPagination::Rails %>
+    <% end %>
+  </div>
+</div>

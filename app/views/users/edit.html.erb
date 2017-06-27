@@ -1,0 +1,53 @@
+<% provide(:title, 'Edit Profile') %>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h3><code>Edit your profile</code></h3>
+
+    <%= form_for(@user, :html => {:class => "form-horizontal"}) do |f|  %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label :firstName, "First name", :class => "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.text_field :name, class: "form-control", placeholder: "Enter First Name" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email", class: 'col-md-3 control-label' %>
+        <div class="col-md-9">
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Enter Email Address' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'Password', class: 'col-md-3 control-label' %>
+        <div class="col-md-9">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Retry Password", class: 'col-md-3 control-label' %>
+        <div class="col-md-9">
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <%= f.submit "Save Changes",  class: 'btn btn-large btn-success'%>
+        </div>
+      </div>
+
+    <% end %>
+
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">Change</a>
+
+  </div>
+  <div class="col-md-3"></div>
+</div>
